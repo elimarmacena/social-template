@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="post_prev_height">100dp</dimen>
+    <dimen name="photo_user_post_miniature_height">100dp</dimen>
+    <dimen name="photo_user_post_miniature_width">100dp</dimen>
+    <dimen name="photo_post_miniature_height">150dp</dimen>
+    <dimen name="follow_icon_height">30dp</dimen>
+    <dimen name="follow_icon_width">30dp</dimen>
 </resources>

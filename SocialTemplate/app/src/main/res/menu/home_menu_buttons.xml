@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/worldItem"
-        android:icon="@drawable/ic_white_world"
-        android:title="@string/world_icon_text"
-        app:showAsAction="ifRoom" />
-    <item
         android:id="@+id/timelineItem"
         android:icon="@drawable/ic_white_house"
         android:title="@string/timeline_icon_text"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/worldItem"
+        android:icon="@drawable/ic_white_world"
+        android:title="@string/world_icon_text"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/profileItem"
