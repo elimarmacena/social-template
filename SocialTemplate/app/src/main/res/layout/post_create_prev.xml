@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/post_prev_height">
+    android:layout_height="@dimen/post_prev_height"
+    android:background="@color/primaryLightColor">
 
     <ImageView
         android:id="@+id/imageView"

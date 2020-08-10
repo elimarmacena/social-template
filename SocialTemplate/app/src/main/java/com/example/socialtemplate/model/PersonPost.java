@@ -10,7 +10,12 @@ public class PersonPost extends ItemView {
     private Bitmap  postPhoto;
 
     public PersonPost(Bitmap ownerPhoto, String ownerName, int ownerId, String postText, Bitmap postPhoto) {
-        this.type = 1;
+        if(postPhoto != null){
+            this.type = 2;
+        }
+        else{
+            this.type = 3;
+        }
         this.ownerPhoto = ownerPhoto;
         this.ownerName = ownerName;
         this.ownerId = ownerId;
