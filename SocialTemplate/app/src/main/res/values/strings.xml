@@ -4,4 +4,5 @@
     <string name="timeline_icon_text">TIMELINE</string>
     <string name="profile_icon_text">PROFILE</string>
     <string name="post_create_prev_hint">Share with the world!</string>
+    <string name="registre_page_title">New User Information</string>
 </resources>
