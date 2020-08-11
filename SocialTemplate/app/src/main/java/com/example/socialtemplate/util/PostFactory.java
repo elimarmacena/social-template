@@ -16,15 +16,19 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PostFactory {
-    static List<String> photoPostPath = new ArrayList<String>(){{
-       add("drawable/humaaans_solo.png");
-       add("drawable/humaaans_group.png");
-    }};
-    static List<String> photoProfilePath = new ArrayList<String>(){{
-        add("drawable/big_shoes.png");
-        add("drawable/big_shoes_f.png");
+    // Photo used for random posts
+    static List<Integer> photoPostPath = new ArrayList<Integer>(){{
+       add(R.drawable.humaaans_solo);
+       add(R.drawable.humaaans_group);
     }};
 
+    // Photo used for random user
+    static List<Integer> photoProfilePath = new ArrayList<Integer>(){{
+        add(R.drawable.big_shoes);
+        add(R.drawable.big_shoes_f);
+    }};
+
+    // Strings for random user names
     static List<String> profileNames = new ArrayList<String>(){{
        add("Emma");
        add("Olivia");
@@ -38,6 +42,7 @@ public class PostFactory {
        add("Paulo");
     }};
 
+    // String for random post content
     static List<String> postContent = new ArrayList<String>(){{
        add("neque volutpat ac");
        add("tincidunt vitae semper");
@@ -47,6 +52,7 @@ public class PostFactory {
        add("tincidunt eget nullam non nisi");
        add("tempor nec feugiat nisl pretium");
     }};
+
     public static List<ItemView> getPreviewCreationPost(Context cntx){
         Bitmap thumbProfile = BitmapFactory.decodeResource(cntx.getResources(),R.drawable.big_shoes);
         Post previewCreationPost = new Post(thumbProfile);
@@ -55,22 +61,25 @@ public class PostFactory {
         return listPost;
     }
 
-    public static List<ItemView> getTimeLinePost(){
+    public static List<ItemView> getTimeLinePost(Context cntx){
         List<ItemView> timelinePosts = new ArrayList<ItemView>();
-        int totalOfPost = ThreadLocalRandom.current().nextInt(0,11);
+        int totalOfPost = ThreadLocalRandom.current().nextInt(4,15);
         for (int i= 0; i < totalOfPost; i++){
-            String profilePicPath = photoProfilePath.get(ThreadLocalRandom.current().nextInt(0,3));
-            File profilePic = new File(profilePicPath);
-            Bitmap thumbProfile = BitmapFactory.decodeFile(profilePic.getAbsolutePath());
-            String profileName = profileNames.get(ThreadLocalRandom.current().nextInt(0,11));
-            String postText = postContent.get(ThreadLocalRandom.current().nextInt(0,8));
+            // getting a random profile picture
+            int profilePicPath = photoProfilePath.get(ThreadLocalRandom.current().nextInt(0,2));
+            Bitmap thumbProfile = BitmapFactory.decodeResource(cntx.getResources(),profilePicPath);
+            // getting a random name
+            String profileName = profileNames.get(ThreadLocalRandom.current().nextInt(0,10));
+            // getting a random post content
+            String postText = postContent.get(ThreadLocalRandom.current().nextInt(0,7));
+            // creating a random user id
             int profileId = ThreadLocalRandom.current().nextInt(0,111);
-            int indexPhotoPost = ThreadLocalRandom.current().nextInt(-1,3);
+            // determining if will be a post with photo or not
+            int indexPhotoPost = ThreadLocalRandom.current().nextInt(-1,2);
             Bitmap thumbPostPhoto = null;
             if(indexPhotoPost != -1){
-                String photoPath = photoPostPath.get(indexPhotoPost);
-                File postPhoto = new File(photoPath);
-                thumbPostPhoto = BitmapFactory.decodeFile(postPhoto.getAbsolutePath());
+                int photoPath = photoPostPath.get(indexPhotoPost);
+                thumbPostPhoto = BitmapFactory.decodeResource(cntx.getResources(),photoPath);
             }
             PersonPost postStructure = new PersonPost(thumbProfile,profileName,profileId,postText,thumbPostPhoto);
             timelinePosts.add(postStructure);

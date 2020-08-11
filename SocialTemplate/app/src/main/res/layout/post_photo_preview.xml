@@ -24,6 +24,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btnFollow"
         app:layout_constraintEnd_toStartOf="@+id/btnFollow"
         app:layout_constraintStart_toEndOf="@+id/ivUser"

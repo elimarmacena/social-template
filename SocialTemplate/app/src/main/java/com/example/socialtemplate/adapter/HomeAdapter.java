@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialtemplate.R;
 import com.example.socialtemplate.model.ItemView;
+import com.example.socialtemplate.model.PersonPost;
 import com.example.socialtemplate.model.Post;
 
 import java.io.File;
@@ -60,14 +62,17 @@ public class HomeAdapter extends RecyclerView.Adapter {
         if(holder.getItemViewType() == 1){
             Bitmap thumbProfile = ((Post)this.homeContent.get(position)).getProfilePhoto();
             ImageView profilePic = holder.itemView.findViewById(R.id.imageView);
+            EditText textInput = holder.itemView.findViewById(R.id.textInputEditText);
+            textInput.setEnabled(false);
             profilePic.setImageBitmap(thumbProfile);
+            // Create the intent for the post screen
 
         }
         else{
-            Bitmap thumbOwner = null;
-            String nameOwner = null;
-            String postText = null;
-            Bitmap thumbPic = null;
+            Bitmap thumbOwner = ((PersonPost)this.homeContent.get(position)).getOwnerPhoto();
+            String nameOwner = ((PersonPost)this.homeContent.get(position)).getOwnerName();
+            String postText = ((PersonPost)this.homeContent.get(position)).getPostText();
+            Bitmap thumbPic = ((PersonPost)this.homeContent.get(position)).getPostPhoto();
             // Post no photo preview
             ImageView ownerPic = holder.itemView.findViewById(R.id.ivUser);
             ownerPic.setImageBitmap(thumbOwner);

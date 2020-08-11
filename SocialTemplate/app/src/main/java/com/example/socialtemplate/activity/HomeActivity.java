@@ -53,6 +53,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if(posts.size() == 0){
             posts.addAll(PostFactory.getPreviewCreationPost(this));
+            posts.addAll(PostFactory.getTimeLinePost(this));
             bottomNav.setSelectedItemId(R.id.timelineItem);
         }
 

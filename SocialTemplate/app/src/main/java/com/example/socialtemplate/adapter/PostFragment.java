@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,6 +39,7 @@ public class PostFragment extends Fragment {
         HomeAdapter adapter = new HomeAdapter(getContext(),this.postViewModel.getPostDataList());
 
         RecyclerView recyclePost = this.view.findViewById(R.id.postRecycle);
+        recyclePost.addItemDecoration(new DividerItemDecoration(recyclePost.getContext(), DividerItemDecoration.VERTICAL));
         recyclePost.setAdapter(adapter);
         recyclePost.setLayoutManager(new LinearLayoutManager(getContext()));
     }
