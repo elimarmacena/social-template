@@ -26,18 +26,20 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         bottomNav = findViewById(R.id.bottonMenu);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.timelineItem:
-                        PostFragment postViewFragment = PostFragment.newInstance();
-                        setFragment(postViewFragment);
+                        CreatePostTimeline();
+                        PostFragment timelinePostViewFragment = PostFragment.newInstance();
+                        setFragment(timelinePostViewFragment);
                         break;
                     case R.id.worldItem:
-                        System.out.println("Discovery Clicked");
+                        CreatePostDiscovery();
+                        PostFragment discoveryPostViewFragment = PostFragment.newInstance();
+                        setFragment(discoveryPostViewFragment);
                         break;
                     case R.id.profileItem:
                         System.out.println("profile clicked");
@@ -50,10 +52,7 @@ public class HomeActivity extends AppCompatActivity {
         });
         this.postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
         List<ItemView> posts = this.postViewModel.getPostDataList();
-
         if(posts.size() == 0){
-            posts.addAll(PostFactory.getPreviewCreationPost(this));
-            posts.addAll(PostFactory.getTimeLinePost(this));
             bottomNav.setSelectedItemId(R.id.timelineItem);
         }
 
@@ -64,5 +63,21 @@ public class HomeActivity extends AppCompatActivity {
         fragTrans.replace(R.id.fragLayout,frag);
         fragTrans.addToBackStack(null);
         fragTrans.commit();
+    }
+    private  void CreatePostTimeline(){
+        List<ItemView> posts = this.postViewModel.getPostDataList();
+        posts.clear();
+        posts.addAll(PostFactory.getPreviewCreationPost(this));
+        posts.addAll(PostFactory.getTimeLinePost(this));
+    }
+    private void CreatePostDiscovery(){
+        List<ItemView> posts = this.postViewModel.getPostDataList();
+        posts.clear();
+        posts.addAll(PostFactory.getEmptyPost());
+        posts.addAll(PostFactory.getTimeLinePost(this));
+    }
+    private void CreateProfileContent(){
+        List<ItemView> posts = this.postViewModel.getPostDataList();
+        posts.clear();
     }
 }

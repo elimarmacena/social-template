@@ -86,4 +86,11 @@ public class PostFactory {
         }
         return timelinePosts;
     }
+
+    public static List<ItemView> getEmptyPost(){
+        final Post emptyPost = new Post(-3);
+        List<ItemView> emptyPostList = new ArrayList<ItemView>();
+        emptyPostList.add(emptyPost);
+        return emptyPostList;
+    }
 }

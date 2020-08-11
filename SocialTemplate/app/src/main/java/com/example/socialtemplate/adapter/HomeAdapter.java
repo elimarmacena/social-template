@@ -40,57 +40,62 @@ public class HomeAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(this.context);
         View view;
-        // Post creation preview
-        if(viewType == 1){
-            view = inflater.inflate(R.layout.post_create_prev,parent,false);
-        }
-        // Post with photo preview
-        else if(viewType == 2){
-            view = inflater.inflate(R.layout.post_photo_preview,parent,false);
-        }
-        // Post no photo preview
-        else{
-            view = inflater.inflate(R.layout.post_preview,parent,false);
-        }
+        switch (viewType){
+            case 1:
+                // Post creation preview
+                view = inflater.inflate(R.layout.post_create_prev,parent,false);
+                break;
+            case 2:
+                // Post with photo preview
+                view = inflater.inflate(R.layout.post_photo_preview,parent,false);
+                break;
+            case 3:
+                // Post no photo preview
+                view = inflater.inflate(R.layout.post_preview,parent,false);
+                break;
+            default:
+                view = inflater.inflate(R.layout.search_bar,parent,false);
+                break;
 
+        }
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         // Post creation preview
-        if(holder.getItemViewType() == 1){
-            Bitmap thumbProfile = ((Post)this.homeContent.get(position)).getProfilePhoto();
-            ImageView profilePic = holder.itemView.findViewById(R.id.imageView);
-            EditText textInput = holder.itemView.findViewById(R.id.textInputEditText);
-            textInput.setEnabled(false);
-            profilePic.setImageBitmap(thumbProfile);
-            // Create the intent for the post screen
+        switch (holder.getItemViewType()){
+            case 1:
+                Bitmap thumbProfile = ((Post)this.homeContent.get(position)).getProfilePhoto();
+                ImageView profilePic = holder.itemView.findViewById(R.id.imageView);
+                EditText textInput = holder.itemView.findViewById(R.id.textInputEditText);
+                textInput.setEnabled(false);
+                profilePic.setImageBitmap(thumbProfile);
+                // Create the intent for the post screen
+                break;
+            case 2 : case 3:
+                Bitmap thumbOwner = ((PersonPost)this.homeContent.get(position)).getOwnerPhoto();
+                String nameOwner = ((PersonPost)this.homeContent.get(position)).getOwnerName();
+                String postText = ((PersonPost)this.homeContent.get(position)).getPostText();
+                Bitmap thumbPic = ((PersonPost)this.homeContent.get(position)).getPostPhoto();
+                // Post no photo preview
+                ImageView ownerPic = holder.itemView.findViewById(R.id.ivUser);
+                ownerPic.setImageBitmap(thumbOwner);
 
+                TextView ownerName = holder.itemView.findViewById(R.id.tvName);
+                ownerName.setText(nameOwner);
+
+                TextView postContent = holder.itemView.findViewById(R.id.tvContent);
+                postContent.setText(postText);
+                // Post with photo preview
+                if(thumbPic != null){
+                    ImageView postPhoto = holder.itemView.findViewById(R.id.ivPost);
+                    postPhoto.setImageBitmap(thumbPic);
+                }
+                break;
+            default:
+                break;
         }
-        else{
-            Bitmap thumbOwner = ((PersonPost)this.homeContent.get(position)).getOwnerPhoto();
-            String nameOwner = ((PersonPost)this.homeContent.get(position)).getOwnerName();
-            String postText = ((PersonPost)this.homeContent.get(position)).getPostText();
-            Bitmap thumbPic = ((PersonPost)this.homeContent.get(position)).getPostPhoto();
-            // Post no photo preview
-            ImageView ownerPic = holder.itemView.findViewById(R.id.ivUser);
-            ownerPic.setImageBitmap(thumbOwner);
-
-            TextView ownerName = holder.itemView.findViewById(R.id.tvName);
-            ownerName.setText(nameOwner);
-
-            TextView postContent = holder.itemView.findViewById(R.id.tvContent);
-            postContent.setText(postText);
-            // Post with photo preview
-            if(thumbPic != null){
-                ImageView postPhoto = holder.itemView.findViewById(R.id.ivPost);
-                postPhoto.setImageBitmap(thumbPic);
-            }
-        }
-
-
-
     }
 
     @Override

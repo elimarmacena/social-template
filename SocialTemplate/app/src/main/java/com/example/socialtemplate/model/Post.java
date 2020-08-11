@@ -9,6 +9,10 @@ public class Post extends ItemView {
         this.type = 1;
         this.profilePhoto = profilePhoto;
     }
+    public Post(int type) {
+        this.type = type;
+        this.profilePhoto = null;
+    }
 
     public Bitmap getProfilePhoto(){
         return this.profilePhoto;
