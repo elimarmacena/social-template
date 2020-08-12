@@ -9,6 +9,7 @@ import com.example.socialtemplate.R;
 import com.example.socialtemplate.model.ItemView;
 import com.example.socialtemplate.model.PersonPost;
 import com.example.socialtemplate.model.Post;
+import com.example.socialtemplate.model.ProfileDetail;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -92,5 +93,32 @@ public class PostFactory {
         List<ItemView> emptyPostList = new ArrayList<ItemView>();
         emptyPostList.add(emptyPost);
         return emptyPostList;
+    }
+
+    public static List<ItemView> getProfilePost(String profileName,Context cntx){
+        List<ItemView> profilePosts = new ArrayList<ItemView>();
+        Bitmap thumbProfile = BitmapFactory.decodeResource(cntx.getResources(),R.drawable.big_shoes);
+        int totalOfPost = ThreadLocalRandom.current().nextInt(4,15);
+        for (int i= 0; i < totalOfPost; i++) {
+            String postText = postContent.get(ThreadLocalRandom.current().nextInt(0, 7));
+            // determining if will be a post with photo or not
+            int indexPhotoPost = ThreadLocalRandom.current().nextInt(-1, 2);
+            Bitmap thumbPostPhoto = null;
+            if (indexPhotoPost != -1) {
+                int photoPath = photoPostPath.get(indexPhotoPost);
+                thumbPostPhoto = BitmapFactory.decodeResource(cntx.getResources(), photoPath);
+            }
+            PersonPost postStructure = new PersonPost(thumbProfile, profileName, postText, thumbPostPhoto);
+            profilePosts.add(postStructure);
+        }
+        return profilePosts;
+    }
+
+    public static List<ItemView> getProfileDetail(String profileName, Context cntx){
+        Bitmap thumbProfile = BitmapFactory.decodeResource(cntx.getResources(),R.drawable.big_shoes);
+        ProfileDetail profileData = new ProfileDetail(profileName,thumbProfile);
+        List<ItemView> profileDetail = new ArrayList<ItemView>();
+        profileDetail.add(profileData);
+        return profileDetail;
     }
 }

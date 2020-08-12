@@ -21,11 +21,11 @@ import com.example.socialtemplate.model.Post;
 import java.io.File;
 import java.util.List;
 
-public class HomeAdapter extends RecyclerView.Adapter {
+public class PostsAdapter extends RecyclerView.Adapter {
     Context context;
     List<ItemView> homeContent;
 
-    public HomeAdapter(Context context, List<ItemView> homeContent){
+    public PostsAdapter(Context context, List<ItemView> homeContent){
         this.context = context;
         this.homeContent = homeContent;
     }

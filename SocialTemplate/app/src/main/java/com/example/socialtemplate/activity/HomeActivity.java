@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.socialtemplate.R;
 import com.example.socialtemplate.adapter.PostFragment;
+import com.example.socialtemplate.adapter.ProfileAdapter;
+import com.example.socialtemplate.adapter.ProfileFragment;
 import com.example.socialtemplate.model.ItemView;
 import com.example.socialtemplate.model.PostViewModel;
 import com.example.socialtemplate.util.PostFactory;
@@ -42,7 +44,9 @@ public class HomeActivity extends AppCompatActivity {
                         setFragment(discoveryPostViewFragment);
                         break;
                     case R.id.profileItem:
-                        System.out.println("profile clicked");
+                        CreateProfileContent();
+                        ProfileFragment ProfileViewFragment = ProfileFragment.newInstance();
+                        setFragment(ProfileViewFragment);
                         break;
                     default:
                         break;
@@ -79,5 +83,7 @@ public class HomeActivity extends AppCompatActivity {
     private void CreateProfileContent(){
         List<ItemView> posts = this.postViewModel.getPostDataList();
         posts.clear();
+        posts.addAll(PostFactory.getProfileDetail("Elimar",this));
+        posts.addAll(PostFactory.getProfilePost("Elimar",this));
     }
 }

@@ -1,6 +1,7 @@
 package com.example.socialtemplate.util;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -145,5 +146,16 @@ public class Utils {
         } finally {
             is.close();
         }
+    }
+
+    public static boolean isLogged(Context context) {
+        SharedPreferences mPrefs = context.getSharedPreferences("myprefs", 0);
+        return mPrefs.getBoolean("logged", false);
+    }
+
+    public static void setLogin(Context context, boolean value) {
+        SharedPreferences mPrefs = context.getSharedPreferences("myprefs", 0);
+        SharedPreferences.Editor mEditor = mPrefs.edit();
+        mEditor.putBoolean("logged", value).commit();
     }
 }

@@ -23,6 +23,19 @@ public class PersonPost extends ItemView {
         this.postPhoto = postPhoto;
     }
 
+    public PersonPost(Bitmap ownerPhoto, String ownerName, String postText, Bitmap postPhoto) {
+        if(postPhoto != null){
+            this.type = 2;
+        }
+        else{
+            this.type = 3;
+        }
+        this.ownerPhoto = ownerPhoto;
+        this.ownerName = ownerName;
+        this.postText = postText;
+        this.postPhoto = postPhoto;
+    }
+
     public Bitmap getOwnerPhoto() {
         return ownerPhoto;
     }

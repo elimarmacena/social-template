@@ -55,6 +55,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/ic_white_follow"
         android:backgroundTint="@color/primaryColor"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

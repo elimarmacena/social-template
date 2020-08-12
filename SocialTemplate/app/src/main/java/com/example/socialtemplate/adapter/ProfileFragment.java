@@ -16,18 +16,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.socialtemplate.R;
 import com.example.socialtemplate.model.PostViewModel;
 
-public class PostFragment extends Fragment {
+public class ProfileFragment extends Fragment {
     private PostViewModel postViewModel;
     private View view;
 
-    public static PostFragment newInstance(){
-        return new PostFragment();
+    public static ProfileFragment newInstance(){
+        return new ProfileFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.view = inflater.inflate(R.layout.posts_view_fragment,container,false);
+        this.view = inflater.inflate(R.layout.profile_view_fragment,container,false);
         return this.view;
     }
 
@@ -36,9 +36,9 @@ public class PostFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         this.postViewModel = new ViewModelProvider(getActivity()).get(PostViewModel.class);
 
-        PostsAdapter adapter = new PostsAdapter(getContext(),this.postViewModel.getPostDataList());
+        ProfileAdapter adapter = new ProfileAdapter(getContext(),this.postViewModel.getPostDataList());
 
-        RecyclerView recyclePost = this.view.findViewById(R.id.postRecycle);
+        RecyclerView recyclePost = this.view.findViewById(R.id.profileRecycle);
         recyclePost.addItemDecoration(new DividerItemDecoration(recyclePost.getContext(), DividerItemDecoration.VERTICAL));
         recyclePost.setAdapter(adapter);
         recyclePost.setLayoutManager(new LinearLayoutManager(getContext()));
