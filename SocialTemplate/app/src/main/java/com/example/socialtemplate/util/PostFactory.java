@@ -121,4 +121,20 @@ public class PostFactory {
         profileDetail.add(profileData);
         return profileDetail;
     }
+
+    public static List<ItemView> getFriendList(Context cntx){
+        List<ItemView> friendsList = new ArrayList<ItemView>();
+        int totalOfPost = ThreadLocalRandom.current().nextInt(4,15);
+        for (int i= 0; i < totalOfPost; i++){
+            // getting a random profile picture
+            int profilePicPath = photoProfilePath.get(ThreadLocalRandom.current().nextInt(0,2));
+            Bitmap thumbProfile = BitmapFactory.decodeResource(cntx.getResources(),profilePicPath);
+            // getting a random name
+            String profileName = profileNames.get(ThreadLocalRandom.current().nextInt(0,10));
+
+            ProfileDetail postStructure = new ProfileDetail(profileName,thumbProfile);
+            friendsList.add(postStructure);
+        }
+        return friendsList;
+    }
 }

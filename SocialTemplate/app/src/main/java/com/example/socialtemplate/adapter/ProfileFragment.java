@@ -1,5 +1,6 @@
 package com.example.socialtemplate.adapter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialtemplate.R;
+import com.example.socialtemplate.activity.FriendsActivity;
 import com.example.socialtemplate.model.PostViewModel;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment{
     private PostViewModel postViewModel;
     private View view;
 

@@ -42,10 +42,12 @@
         android:layout_marginTop="150dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="50dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/loginInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/named_logo"
         tools:srcCompat="@drawable/named_logo" />
 
     <EditText

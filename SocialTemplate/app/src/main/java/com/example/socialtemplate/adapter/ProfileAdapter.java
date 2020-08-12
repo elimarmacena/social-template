@@ -2,6 +2,7 @@ package com.example.socialtemplate.adapter;
 
 import android.app.Person;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialtemplate.R;
+import com.example.socialtemplate.activity.FriendsActivity;
 import com.example.socialtemplate.model.ItemView;
 import com.example.socialtemplate.model.PersonPost;
 import com.example.socialtemplate.model.ProfileDetail;
@@ -75,6 +77,7 @@ public class ProfileAdapter extends RecyclerView.Adapter {
                 postPhoto.setImageBitmap(thumbPic);
             }
         }
+        // Profile details information
         else{
             ProfileDetail profileDetail = ((ProfileDetail)this.profileContent.get(position));
             Bitmap profilePhoto = profileDetail.getProfilePhoto();
@@ -88,7 +91,37 @@ public class ProfileAdapter extends RecyclerView.Adapter {
             name.setText(profileName);
 
             TextView friends = holder.itemView.findViewById(R.id.friendCountText);
-            friends.setText(context.getResources().getString(R.string.profile_page_friends) +": "+ friendsCount);
+            friends.setText(context.getResources().getString(R.string.profile_page_friends) +" "+ friendsCount);
+            final Context localContext = this.context;
+            //Setting buttons action
+            friends.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(localContext, FriendsActivity.class);
+                    localContext.startActivity(intent);
+                }
+            });
+
+            /*
+            Button galleryButton = holder.itemView.findViewById(R.id.galleryButton);
+            galleryButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+            Button settingsButton = holder.itemView.findViewById(R.id.settingsButton);
+            galleryButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+             */
+
+
         }
     }
 
@@ -101,4 +134,5 @@ public class ProfileAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         return this.profileContent.get(position).getType();
     }
+
 }
