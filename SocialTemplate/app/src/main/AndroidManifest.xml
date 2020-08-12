@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/ic_white_person"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.FriendsActivity"></activity>
+        <activity android:name=".activity.PostCreationActivity"></activity>
+        <activity android:name=".activity.FriendsActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.LoginActivity">
             <intent-filter>

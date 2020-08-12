@@ -8,4 +8,7 @@
     <string name="register_button">Register</string>
     <string name="login_button">Login</string>
     <string name="profile_page_friends">Friends:</string>
+    <string name="post_comment">View the comments</string>
+    <string name="post_creation_title">Publish Something</string>
+    <string name="post_creation_button">Publish</string>
 </resources>
