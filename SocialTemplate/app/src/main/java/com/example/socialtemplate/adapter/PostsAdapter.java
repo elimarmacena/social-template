@@ -73,9 +73,11 @@ public class PostsAdapter extends RecyclerView.Adapter {
         int discoveryPostId = ((HomeActivity) this.context).findViewById(R.id.worldItem).getId();
         int timeLinePostId = ((HomeActivity) this.context).findViewById(R.id.timelineItem).getId();
         int selectedItemId = contexMenu.getSelectedItemId();
+        // check if is the discovery tab, and then setting the follow icon
         if(selectedItemId == discoveryPostId && (holder.getItemViewType() == 2 || holder.getItemViewType() == 3)){
             holder.itemView.findViewById(R.id.btnFollow).setBackground(this.context.getDrawable(R.drawable.ic_white_follow));
         }
+        // check if is the timeline tab, and then setting the unfollow icon
         else if (selectedItemId == timeLinePostId && (holder.getItemViewType() == 2 || holder.getItemViewType() == 3)){
             holder.itemView.findViewById(R.id.btnFollow).setBackground(this.context.getDrawable(R.drawable.ic_white_unfollow));
         }
@@ -89,6 +91,7 @@ public class PostsAdapter extends RecyclerView.Adapter {
                 final Context localContext = this.context;
                 EditText textInput = holder.itemView.findViewById(R.id.textInputEditText);
                 textInput.setEnabled(true);
+                // setting the post creation screen
                 textInput.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -97,7 +100,6 @@ public class PostsAdapter extends RecyclerView.Adapter {
                     }
                 });
                 profilePic.setImageBitmap(thumbProfile);
-                // Create the intent for the post screen
                 break;
             case 2 : case 3:
                 Bitmap thumbOwner = ((PersonPost)this.homeContent.get(position)).getOwnerPhoto();

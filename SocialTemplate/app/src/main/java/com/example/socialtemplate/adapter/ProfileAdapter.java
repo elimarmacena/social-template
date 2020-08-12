@@ -101,27 +101,6 @@ public class ProfileAdapter extends RecyclerView.Adapter {
                     localContext.startActivity(intent);
                 }
             });
-
-            /*
-            Button galleryButton = holder.itemView.findViewById(R.id.galleryButton);
-            galleryButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            Button settingsButton = holder.itemView.findViewById(R.id.settingsButton);
-            galleryButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-             */
-
-
         }
     }
 

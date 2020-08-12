@@ -24,7 +24,9 @@ public class FriendsActivity extends AppCompatActivity{
         RecyclerView rvFriends = findViewById(R.id.friendsRecyle);
         rvFriends.addItemDecoration(new DividerItemDecoration(rvFriends.getContext(), DividerItemDecoration.VERTICAL));
         List<ItemView> friendsList = new ArrayList<>();
+        //Empty data used to create searchbar
         friendsList.addAll(PostFactory.getEmptyPost());
+        //Getting friends data to populate the view
         friendsList.addAll(PostFactory.getFriendList(this));
 
         FriendsAdapter adapter = new FriendsAdapter(this,friendsList);

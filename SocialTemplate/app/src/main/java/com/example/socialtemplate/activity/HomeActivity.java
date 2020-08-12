@@ -34,16 +34,19 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.timelineItem:
+                        // Getting data for the timeline
                         CreatePostTimeline();
                         PostFragment timelinePostViewFragment = PostFragment.newInstance();
                         setFragment(timelinePostViewFragment);
                         break;
                     case R.id.worldItem:
+                        // Getting data for the discovery
                         CreatePostDiscovery();
                         PostFragment discoveryPostViewFragment = PostFragment.newInstance();
                         setFragment(discoveryPostViewFragment);
                         break;
                     case R.id.profileItem:
+                        // Getting data for the profile
                         CreateProfileContent();
                         ProfileFragment ProfileViewFragment = ProfileFragment.newInstance();
                         setFragment(ProfileViewFragment);
@@ -54,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+        //Starting data for the first time accessed
         this.postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
         List<ItemView> posts = this.postViewModel.getPostDataList();
         if(posts.size() == 0){

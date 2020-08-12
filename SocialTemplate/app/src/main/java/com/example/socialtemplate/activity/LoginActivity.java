@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final Button loginButton = findViewById(R.id.loginButton);
         final Context context = this;
+        // setting the login button action
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Button registerButton = findViewById(R.id.registerButton);
 
+        // setting the register button action
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

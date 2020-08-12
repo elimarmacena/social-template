@@ -47,6 +47,7 @@ public class FriendsAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         switch (holder.getItemViewType()){
+            // Friends details
             case -1:
                 ProfileDetail profileDetail = ((ProfileDetail)this.friendsList.get(position));
                 Bitmap profilePhoto = profileDetail.getProfilePhoto();

@@ -19,6 +19,7 @@ public class PostCreationActivity extends AppCompatActivity {
 
         final Context context = this;
         Button publishButton = findViewById(R.id.publishButton);
+        // setting the publish button action
         publishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
