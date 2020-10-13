@@ -10,11 +10,16 @@ import android.util.DisplayMetrics;
 
 import androidx.core.app.ActivityCompat;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 public class Utils {
     /*
@@ -157,5 +162,29 @@ public class Utils {
         SharedPreferences mPrefs = context.getSharedPreferences("myprefs", 0);
         SharedPreferences.Editor mEditor = mPrefs.edit();
         mEditor.putBoolean("logged", value).commit();
+    }
+
+    public static long dateToLong(String dateString){
+        SimpleDateFormat pattern  = new SimpleDateFormat("dd/MM/yyyy");
+        try{
+            Date dateResult = pattern.parse(dateString);
+            long dateLong = dateResult.getTime();
+            return dateLong;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    static public File createTempFile(InputStream is, Context context) throws IOException {
+        File f = File.createTempFile("tempPic", "temp", context.getCacheDir());
+        FileOutputStream outputStream = new FileOutputStream(f);
+        int read;
+        byte[] bytes = new byte[1024];
+
+        while ((read = is.read(bytes)) != -1) {
+            outputStream.write(bytes, 0, read);
+        }
+        return f;
     }
 }
